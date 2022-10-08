@@ -31,6 +31,8 @@ import {
 import AuthTabHeader from '../../components/AuthTabHeader';
 
 const SignUpScreen = (props: any) => {
+  const {navigation} = props;
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const currentScreenName = props?.route?.name;
@@ -46,10 +48,13 @@ const SignUpScreen = (props: any) => {
         style={backgroundStyle}
         contentContainerStyle={styles.container}>
         <View style={styles.header}>
-          <AuthTabHeader activeScreenName={currentScreenName} />
+          <AuthTabHeader
+            activeScreenName={currentScreenName}
+            navigation={navigation}
+          />
         </View>
         <View style={styles.body}>
-          <Text>Sign In</Text>
+          <Text>Sign Up</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -65,11 +70,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: '#306060',
+    backgroundColor: '#3E66FB',
   },
 
   header: {
-    backgroundColor: '#306060',
+    backgroundColor: '#3E66FB',
     flex: 0.3,
     display: 'flex',
     padding: 15,

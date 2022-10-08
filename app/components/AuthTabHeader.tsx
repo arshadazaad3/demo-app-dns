@@ -9,7 +9,7 @@ const signInScreen = 'SignIn';
 const signUpScreen = 'SignUp';
 
 function AuthTabHeader(props: any) {
-  const {activeScreenName = 'SignIn'} = props;
+  const {activeScreenName = 'SignIn', navigation} = props;
 
   return (
     <>
@@ -25,6 +25,7 @@ function AuthTabHeader(props: any) {
               alignItems: 'center',
             }}>
             <Text
+              onPress={() => navigation.navigate('SignIn')}
               style={{
                 ...styles.fontCommon,
                 marginLeft: 20,
@@ -52,6 +53,7 @@ function AuthTabHeader(props: any) {
               alignItems: 'center',
             }}>
             <Text
+              onPress={() => navigation.navigate('SignUp')}
               style={{
                 ...styles.fontCommon,
                 marginLeft: 20,
@@ -99,6 +101,7 @@ const styles = StyleSheet.create({
 
 AuthTabHeader.propTypes = {
   activeScreenName: PropTypes.string,
+  navigation: PropTypes.any,
 };
 
 export default AuthTabHeader;

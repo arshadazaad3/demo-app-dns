@@ -15,8 +15,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import {usersList} from '../../mock/users';
+import AuthTabHeader from '../../components/AuthTabHeader';
 
-const SignInScreen = ({navigation}: {navigation: any}) => {
+const SignInScreen = (props: any) => {
+  const {navigation} = props;
+
   const [data, setData] = React.useState({
     username: '',
     password: '',
@@ -25,6 +28,8 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
     isValidUser: true,
     isValidPassword: true,
   });
+
+  const currentScreenName = props?.route?.name;
 
   const textInputChange = (val: any) => {
     if (val.trim().length >= 4) {
@@ -108,7 +113,32 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
     <View style={styles.container}>
       <StatusBar backgroundColor="#009387" barStyle="light-content" />
       <View style={styles.header}>
-        <Text style={styles.text_header}>Welcome!</Text>
+        {/* <Text style={styles.text_header}>Welcome!</Text> */}
+        <AuthTabHeader
+          activeScreenName={currentScreenName}
+          navigation={navigation}
+        />
+
+        <View>
+          <Text
+            style={{
+              fontFamily: 'Roboto-Regular',
+              color: '#FFF',
+              fontSize: 30,
+              letterSpacing: 1,
+            }}>
+            Welcome back,
+          </Text>
+          <Text
+            style={{
+              fontFamily: 'Roboto-Regular',
+              color: '#FFF',
+              fontSize: 14,
+              letterSpacing: 1,
+            }}>
+            Sign in to continue,
+          </Text>
+        </View>
       </View>
       <Animatable.View
         animation="fadeInUpBig"
@@ -123,12 +153,13 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
             styles.text_footer,
             {
               color: '#000',
+              marginBottom: 10,
             },
           ]}>
           Username
         </Text>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={'#000'} size={20} />
+          {/* <FontAwesome name="user-o" color={'#000'} size={20} /> */}
           <TextInput
             placeholder="Your Username"
             placeholderTextColor="#666666"
@@ -160,14 +191,15 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
           style={[
             styles.text_footer,
             {
-              color: '#FFF',
+              color: '#000',
               marginTop: 35,
+              marginBottom: 10,
             },
           ]}>
           Password
         </Text>
         <View style={styles.action}>
-          <Feather name="lock" color={'#FFF'} size={20} />
+          {/* <Feather name="lock" color={'#FFF'} size={20} /> */}
           <TextInput
             placeholder="Your Password"
             placeholderTextColor="#666666"
@@ -181,13 +213,13 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
             autoCapitalize="none"
             onChangeText={val => handlePasswordChange(val)}
           />
-          <TouchableOpacity onPress={updateSecureTextEntry}>
+          {/* <TouchableOpacity onPress={updateSecureTextEntry}>
             {data.secureTextEntry ? (
               <Feather name="eye-off" color="grey" size={20} />
             ) : (
               <Feather name="eye" color="grey" size={20} />
             )}
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
@@ -209,7 +241,7 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
               loginHandle(data.username, data.password);
             }}>
             <LinearGradient
-              colors={['#08d4c4', '#01ab9d']}
+              colors={['#3E66FB', '#3E66FB']}
               style={styles.signIn}>
               <Text
                 style={[
@@ -224,11 +256,11 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('SignUpScreen')}
+            onPress={() => navigation.navigate('SignUp')}
             style={[
               styles.signIn,
               {
-                borderColor: '#009387',
+                borderColor: '#3E66FB',
                 borderWidth: 1,
                 marginTop: 15,
               },
@@ -237,7 +269,7 @@ const SignInScreen = ({navigation}: {navigation: any}) => {
               style={[
                 styles.textSign,
                 {
-                  color: '#009387',
+                  color: '#3E66FB',
                 },
               ]}>
               Sign Up
@@ -254,13 +286,16 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#009387',
+    backgroundColor: '#3E66FB',
   },
   header: {
     flex: 1,
-    justifyContent: 'flex-end',
+    // justifyContent: 'flex-end',
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingBottom: 30,
+    // marginTop: 10,
+    paddingTop: 15,
+    justifyContent: 'space-between',
   },
   footer: {
     flex: 3,
@@ -298,6 +333,10 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : -12,
     paddingLeft: 10,
     color: '#05375a',
+    borderWidth: 1,
+    borderColor: '#b5b3ae',
+    borderRadius: 30,
+    padding: 12,
   },
   errorMsg: {
     color: '#FF0000',
