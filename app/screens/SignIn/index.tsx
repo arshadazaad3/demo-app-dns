@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import {usersList} from '../../mock/users';
 import AuthTabHeader from '../../components/AuthTabHeader';
@@ -207,7 +206,7 @@ const SignInScreen = (props: any) => {
             style={[
               styles.textInput,
               {
-                color: '#FFF',
+                color: '#000',
               },
             ]}
             autoCapitalize="none"
