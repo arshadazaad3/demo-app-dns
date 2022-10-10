@@ -38,15 +38,25 @@ const HomeScreen = (props: any) => {
         </Text>
         <DataTable
           data={staticTableData} // list of objects
-          colNames={['ID', 'Domain', 'TLD']} //List of Strings
+          colNames={[
+            'ID',
+            'Domain_name',
+            'Extension',
+            'Status',
+            'Adult_content',
+            'Keywords',
+          ]} //List of Strings
           colSettings={[
             {
               name: 'ID',
               type: COL_TYPES.STRING,
-              width: '20%',
+              width: 50,
             },
-            {name: 'Domain', type: COL_TYPES.INT, width: '45%'},
-            {name: 'TLD', type: COL_TYPES.STRING, width: '30%'},
+            {name: 'Domain_name', type: COL_TYPES.INT, width: 150},
+            {name: 'Extension', type: COL_TYPES.STRING, width: 100},
+            {name: 'Status', type: COL_TYPES.STRING, width: 100},
+            {name: 'Adult_content', type: COL_TYPES.STRING, width: 130},
+            {name: 'Keywords', type: COL_TYPES.STRING, width: 300},
           ]} //List of Objects
           noOfPages={1} //number
           backgroundColor={'#FFF'} //Table Background Color
