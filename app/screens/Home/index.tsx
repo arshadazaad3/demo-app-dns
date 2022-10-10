@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   SafeAreaView,
@@ -5,19 +6,16 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
-  View,
 } from 'react-native';
 import DataTable, {COL_TYPES} from 'react-native-datatable-component';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import AuthTabHeader from '../../components/AuthTabHeader';
+import {staticTableData} from './constant';
 
 const HomeScreen = (props: any) => {
   const {navigation} = props;
 
   const isDarkMode = useColorScheme() === 'dark';
-
-  const currentScreenName = props?.route?.name;
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -39,30 +37,16 @@ const HomeScreen = (props: any) => {
           DNS Table List View
         </Text>
         <DataTable
-          data={[
-            {name: 'Ainsley Wilson', age: 21, gender: 'male'},
-            {name: 'Baylee Beck', age: 22, gender: 'male'},
-            {name: 'Princess Pollard', age: 21, gender: 'male'},
-            {
-              name: 'Amna Shakeel',
-              age: 22,
-              gender: 'female',
-            },
-            {name: 'Kianna Santiago', age: 20, gender: 'male'},
-            {name: 'Arthur Kelley', age: 13, gender: 'male'},
-            {name: 'Liana Zhang', age: 13, gender: 'male'},
-            {name: 'Lennon Simmons', age: 13, gender: 'male'},
-            {name: 'Alyvia Douglas', age: 13, gender: 'male'},
-          ]} // list of objects
-          colNames={['name', 'age', 'gender']} //List of Strings
+          data={staticTableData} // list of objects
+          colNames={['ID', 'Domain', 'TLD']} //List of Strings
           colSettings={[
             {
-              name: 'name',
+              name: 'ID',
               type: COL_TYPES.STRING,
-              width: '40%',
+              width: '20%',
             },
-            {name: 'age', type: COL_TYPES.INT, width: '30%'},
-            {name: 'gender', type: COL_TYPES.STRING, width: '30%'},
+            {name: 'Domain', type: COL_TYPES.INT, width: '45%'},
+            {name: 'TLD', type: COL_TYPES.STRING, width: '30%'},
           ]} //List of Objects
           noOfPages={1} //number
           backgroundColor={'#FFF'} //Table Background Color
