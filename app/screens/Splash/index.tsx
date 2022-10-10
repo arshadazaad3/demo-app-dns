@@ -18,11 +18,11 @@ const SplashScreen = ({navigation}: {navigation: any}) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#3E66FB" barStyle="light-content" />
+      <StatusBar backgroundColor="#C7D6E7" barStyle="light-content" />
       <View style={styles.header}>
         <Animatable.Image
           animation="bounceIn"
-          duraton="1500"
+          duration={2500}
           source={require('../../assets/images/logo.png')}
           style={styles.logo}
           resizeMode="contain"
@@ -69,7 +69,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3E66FB',
+    backgroundColor: '#C7D6E7',
   },
   header: {
     flex: 2,

@@ -59,7 +59,7 @@ const HomeScreen = (props: any) => {
             {name: 'Keywords', type: COL_TYPES.STRING, width: 300},
           ]} //List of Objects
           noOfPages={1} //number
-          backgroundColor={'#FFF'} //Table Background Color
+          backgroundColor={'#fdfdfd'} //Table Background Color
           headerLabelStyle={{color: 'rgba(0, 0, 0, 0.5)', fontSize: 12}} //Text Style Works
         />
       </ScrollView>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: '#fdfdfd',
   },
 
   header: {
